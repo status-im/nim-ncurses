@@ -7,7 +7,7 @@ else:
   const libncurses* = "libncursesw.so"
 
 type
-  chtype*  = cint ## Holds a character and possibly an attribute
+  chtype*  = cuint ## Holds a character and possibly an attribute
   attr_t*  = chtype ## Attribute type
 
   cchar_t* = object ## Complex char
@@ -232,7 +232,7 @@ proc assume_default_colors*(fg, bg: cint): ErrCode {.cdecl, importc, discardable
 
 #attr: Character and attribute control routines
 const
-  u1: uint = 1
+  u1: cuint = 1
   A_NORMAL*      = (u1 - u1)
   A_ATTRIBUTES*  = NCURSES_BITS(not (u1 - u1),  0)
   A_CHAR_TEXT*   = (NCURSES_BITS(u1, 0) - u1.chtype)
